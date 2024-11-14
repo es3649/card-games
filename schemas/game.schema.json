@@ -1,0 +1,105 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "required": [
+        "shared_zones",
+        "player_zones",
+        "players",
+        "decks"
+    ],
+    "properties": {
+        "tricks": {
+            "type": "boolean"
+        },
+        "turns": {
+            "type": "boolean"
+        },
+        "shared_zones": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "visibility",
+                    "control",
+                    "deck"
+                ],
+                "properties": {
+                    "visibility": {
+                        "enum": ["all", "active-player", "inactive-player", "allies", "opponents"]
+                    },
+                    "show": {
+                        "anyOf": [{
+                            "type": "integer",
+                            "minimum": 1
+                        },{
+                            "type": "array",
+                            "minItems": 2,
+                            "maxItems": 2,
+                            "items": {
+                                "type": "integer",
+                                "minimum": 0
+                            }
+                        },{
+                            "enum": ["all", "none"]
+                        }]
+                    },
+                    "control": {
+                        "enum": ["face-up", "face-down", "active-player", "inactive-player", "allies", "opponents"]
+                    },
+                    "deck": {
+                        "type": "string"
+                    },
+                    "deck_pile": {
+                        "type": "boolean"
+                    },
+                    "size": {
+                        "anyOf": [{
+                            "type": "integer",
+                            "minimum": 1
+                        },{
+                            "type": "array",
+                            "minItems": 2,
+                            "maxItems": 2,
+                            "items": {
+                                "type": "integer",
+                                "minimum": 0
+                            }
+                        },{
+                            "type": "null"
+                        }]
+                    },
+                    "order_fixed": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        },
+        "player_zones": {
+            
+        },
+        "decks": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "name",
+                    "source"
+                ],
+                "properties": {
+                    "name": {
+                        "type": "string"
+                    },
+                    "source": {
+                        "type": "string"
+                    },
+                    "each_player": {
+                        "type": "boolean"
+                    },
+                    "aces_high": {
+                        "type": "boolean"
+                    }
+                }
+            }
+        }
+    },
+    "$": "jQuery, lol"
+}

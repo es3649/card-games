@@ -1,0 +1,55 @@
+{
+    "$schema": "../schemas/deck.schema.json",
+    "raw": [{
+        "value": "Wild",
+        "color": "#000",
+        "copies": 4
+    },{
+        "value": "+4 wild",
+        "color": "#000",
+        "copies": 4
+    }],
+    "pairs": [{
+        "copies": 2,
+        "suits": [{
+            "name": "Red",
+            "color": "#f00"
+        },{
+            "name": "Green",
+            "color": "#0f0"
+        },{
+            "name": "Yellow",
+            "color": "#fc0"
+        },{
+            "name": "Blue",
+            "color": "#00f"
+        }],
+        "ranks": [{
+            "value": 0
+        },{
+            "value": 1
+        },{
+            "value": 2
+        },{
+            "value": 3
+        },{
+            "value": 4
+        },{
+            "value": 5
+        },{
+            "value": 6
+        },{
+            "value": 7
+        },{
+            "value": 8
+        },{
+            "value": 9
+        },{
+            "value": "Reverse"
+        },{
+            "value": "Skip"
+        },{
+            "value": "+2"
+        }]
+    }]
+}

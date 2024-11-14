@@ -1,0 +1,86 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "properties": {
+        "raw": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "properties": {
+                    "value": {
+                        "anyOf": [{
+                            "type": "number"
+                        },{
+                            "type": "string"
+                        }]
+                    },
+                    "suit": {
+                        "type": "string"
+                    },
+                    "color": {
+                        "pattern": "#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?"
+                    },
+                    "text": {
+                        "type": "string"
+                    },
+                    "copies": {
+                        "type": "integer",
+                        "minimum": 1
+                    }
+                }
+            }
+        },
+        "pairs": {
+            "type": "array",
+            "items": {
+                "type": "object",
+                "required": [
+                    "suits",
+                    "ranks"
+                ],
+                "properties": {
+                    "copies": {
+                        "type": "integer",
+                        "minimum": 1
+                    },
+                    "suits": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                            "type": "object",
+                            "required": ["name"],
+                            "properties": {
+                                "name": {
+                                    "type": "string"
+                                },
+                                "color": {
+                                    "type": "string",
+                                    "pattern": "#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?"
+                                }
+                            }
+                        }
+                    },
+                    "ranks": {
+                        "type": "array",
+                        "minItems": 1,
+                        "items": {
+                            "type": "object",
+                            "required": ["value"],
+                            "properties": {
+                                "value": {
+                                    "anyOf": [{
+                                        "type": "number"
+                                    },{
+                                        "type": "string"
+                                    }]
+                                },
+                                "text": {
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
