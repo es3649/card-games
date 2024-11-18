@@ -8,76 +8,30 @@
     ],
     "properties": {
         "tricks": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "whether the game is played in tricks"
         },
         "turns": {
-            "type": "boolean"
+            "type": "boolean",
+            "description": "whether the game is player in turns"
         },
         "shared_zones": {
             "type": "array",
+            "description": "an enumeration of any global card zones: each of these zones is created only the specified number of times, and are not duplicated depending on the player count",
             "items": {
-                "type": "object",
-                "required": [
-                    "visibility",
-                    "control",
-                    "deck"
-                ],
-                "properties": {
-                    "visibility": {
-                        "enum": ["all", "active-player", "inactive-player", "allies", "opponents"]
-                    },
-                    "show": {
-                        "anyOf": [{
-                            "type": "integer",
-                            "minimum": 1
-                        },{
-                            "type": "array",
-                            "minItems": 2,
-                            "maxItems": 2,
-                            "items": {
-                                "type": "integer",
-                                "minimum": 0
-                            }
-                        },{
-                            "enum": ["all", "none"]
-                        }]
-                    },
-                    "control": {
-                        "enum": ["face-up", "face-down", "active-player", "inactive-player", "allies", "opponents"]
-                    },
-                    "deck": {
-                        "type": "string"
-                    },
-                    "deck_pile": {
-                        "type": "boolean"
-                    },
-                    "size": {
-                        "anyOf": [{
-                            "type": "integer",
-                            "minimum": 1
-                        },{
-                            "type": "array",
-                            "minItems": 2,
-                            "maxItems": 2,
-                            "items": {
-                                "type": "integer",
-                                "minimum": 0
-                            }
-                        },{
-                            "type": "null"
-                        }]
-                    },
-                    "order_fixed": {
-                        "type": "boolean"
-                    }
-                }
+                "$ref": "./zone_descriptor.schema.json"
             }
         },
         "player_zones": {
-            
+            "type": "array",
+            "description": "an enumaration of player-specific zones: a copy of each of these zones is create for each player in the game",
+            "items": {
+                "$ref": "./zone_descriptor.schema.json"
+            }
         },
         "decks": {
             "type": "array",
+            "description": "an enumeration and labelling of the decks which will be used in the game",
             "items": {
                 "type": "object",
                 "required": [
@@ -86,20 +40,27 @@
                 ],
                 "properties": {
                     "name": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "the name which is used within this object to refer to this deck"
                     },
                     "source": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "path to a source deck file"
                     },
                     "each_player": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "whether a copy of this deck should be created for each player in the game"
                     },
                     "aces_high": {
-                        "type": "boolean"
+                        "type": "boolean",
+                        "description": "in games where card values can be assigned and well ordered, should aces/ones be considered high or low"
                     }
                 }
             }
+        },
+        "players": {
+            "allOf": [{ "$ref": "./count.schema.json" }],
+            "description": "the number of players that the game accomodates"
         }
-    },
-    "$": "jQuery, lol"
+    }
 }

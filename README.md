@@ -8,17 +8,17 @@ This is first and foremost an attempt to classify a broad category of card games
 No card game specified has any play rules implemented, but data describes cards, hands, play areas, visibility of those areas, and so forth.
 A properly designed game engine could take these game and deck structures to implement any of a wide variety of card games.
 
-## Data Model
+# Data Model
 
 Each game requires one game fule, and one or more deck files.
 Each of these is a json file, and follows the schemas located at [`/data/schemas`](./data/schemas/).
 Each of these is also described below.
 
-### Game
+## Game
 
 A game consists of `decks`, `zones` (both shared and player), as well as a few additional rule options, such as `tricks`.
 
-#### Decks
+### Decks
 
 The `decks` member describes which and how many decks of cards are used.
 It expects an array of objects defining decks.
@@ -40,9 +40,9 @@ This indicates that
 - the deck is names and can be referred to later (when describing zones) as "deck"
 - each player will have such a deck (and therefore the deck should not be referred to by name in )
 
-#### Other rules:
+### Other rules:
 
-##### Tricks
+#### Tricks
 
 The `tricks` field is optional takes a boolean.
 If not specified, it is assumed to be false.
@@ -91,3 +91,16 @@ This can be
 - ommitted if the size is unlimited
 - an integer, denoting a fixed size
 - a range (2-element list) defining legal upper and lower bounds for the zone
+
+***
+
+## Deck
+
+A deck represents some deck of cards.
+It's not extensible enough to support most TCGs, unless you want to cram a lot of stuff into the text field, but it can support non-standard suit-rank combos, or un-suited cards, like wild cards in Uno.
+
+A deck can be specified by enumerating cards, or through suit-rank pairings.
+
+### Raw
+
+### Pairs

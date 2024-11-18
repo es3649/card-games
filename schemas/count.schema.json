@@ -1,0 +1,18 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "./count.schema.json",
+    "anyOf": [{
+        "type": "integer",
+        "minimum": 1
+    },{
+        "type": "array",
+        "minItems": 2,
+        "maxItems": 2,
+        "items": {
+            "type": "integer",
+            "minimum": 0
+        }
+    },{
+        "type": "null"
+    }]
+}

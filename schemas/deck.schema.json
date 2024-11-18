@@ -3,6 +3,7 @@
     "properties": {
         "raw": {
             "type": "array",
+            "description": "A list of cards, with or without suits appearing in the deck",
             "items": {
                 "type": "object",
                 "properties": {
@@ -11,26 +12,32 @@
                             "type": "number"
                         },{
                             "type": "string"
-                        }]
+                        }],
+                        "description": "the value of this card"
                     },
                     "suit": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "the suit of the card"
                     },
                     "color": {
-                        "pattern": "#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?"
+                        "pattern": "#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?",
+                        "description": "a 3- or 6-digit hex color of this card: the value is purely cosmetic"
                     },
                     "text": {
-                        "type": "string"
+                        "type": "string",
+                        "description": "any additional text appearing on the card"
                     },
                     "copies": {
                         "type": "integer",
-                        "minimum": 1
+                        "minimum": 1,
+                        "description": "the number of times this card appears in this deck"
                     }
                 }
             }
         },
         "pairs": {
             "type": "array",
+            "description": "a list of pairings of suits with card values: it will generate cards by taking the cartesian product of the suits in each pairing with the values in each pairing, then duplicating the results one or more tiems, as specified",
             "items": {
                 "type": "object",
                 "required": [
@@ -40,21 +47,25 @@
                 "properties": {
                     "copies": {
                         "type": "integer",
-                        "minimum": 1
+                        "minimum": 1,
+                        "description": "if specified, each card resulting from the pairing generation will be included this many times"
                     },
                     "suits": {
                         "type": "array",
+                        "description": "the suits to be paired",
                         "minItems": 1,
                         "items": {
                             "type": "object",
                             "required": ["name"],
                             "properties": {
                                 "name": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "the name of this suit"
                                 },
                                 "color": {
                                     "type": "string",
-                                    "pattern": "#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?"
+                                    "pattern": "#[0-9a-fA-F]{3}([0-9a-fA-F]{3})?",
+                                    "description": "a 3- or 6-digit hex color for cards of this suit: the value is purely cosmetic"
                                 }
                             }
                         }
@@ -62,6 +73,7 @@
                     "ranks": {
                         "type": "array",
                         "minItems": 1,
+                        "description": "the ranks/values to be paired",
                         "items": {
                             "type": "object",
                             "required": ["value"],
@@ -71,10 +83,12 @@
                                         "type": "number"
                                     },{
                                         "type": "string"
-                                    }]
+                                    }],
+                                    "description": "the value of this card"
                                 },
                                 "text": {
-                                    "type": "string"
+                                    "type": "string",
+                                    "description": "any additional text appearing on the card"
                                 }
                             }
                         }

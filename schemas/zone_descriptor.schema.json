@@ -1,0 +1,85 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "./zone_descriptor.schema.json",
+
+    "type": "object",
+    "required": [
+        "control",
+        "decks"
+    ],
+    "properties": {
+        "zone_visibility": {
+            "enum": ["all", "owner", "active-player", "inactive-player", "allies", "opponents"],
+            "description": "the visibility properties for this zone: who can see it? must be specified if card_visibility is set; if card_visibility isn't set, makes contents of the entire zone visible"
+        },
+        "card_visibility": {
+            "anyOf": [{
+                "type": "number"
+            },{
+                "type": "string",
+                "enum": ["all", "none"]
+            }],
+            "description": "how many cards from this zone are visible, if unset or none, no cards are visible; cosmetically, these cards will splay out"
+        },
+        "control": {
+            "enum": ["all", "owner", "active-player", "inactive-player", "allies", "opponents"],
+            "description": "which player(s) can interact with this zone"
+        },
+        "decks": {
+            "type": "array",
+            "description": "the names of the decks whose cards can be added to this pile",
+            "items": {
+                "type": "string"
+            }
+        },
+        "is_library": {
+            "type": "boolean",
+            "description": "whether un-dealt cards are placed in this pile"
+        },
+        "size": {
+            "type": "object",
+            "properties": {
+                "initial": {
+                    "type": "number",
+                    "description": "the initial size of this zone: how many cards are put here"
+                },
+                "limits": {
+                    "allOf": [{"$ref": "./count.schema.json"}],
+                    "description": "the max/min number of cards which can be in this zone"
+                }
+            },
+            "description": "initial and limiting card-counts for this zone"
+        },
+        "order": {
+            "type": "string",
+            "enum": ["fixed", "shuffled", "any"],
+            "description": "ordering properties of this zone: whether the order is fixed, they are shuffled, or they can be freely reordered (any)"
+        },
+        "count": {
+            "allOf": [{"$ref": "./count.schema.json"}],
+            "description": "the number of copies of this zone which can be created: default is 1"
+        },
+
+        "name": {
+            "type": "string",
+            "description": "the name of this zone, referenced in moving cards between properties"
+        },
+        "replenish": {
+            "description": "describes properties for replenishing this zone when it is below its size threshhold",
+            "properties": {
+                "on_empty": {
+                    "type": "boolean",
+                    "description": "if no size is specified, we check this field to determine whether to repenish when the zone is empty"
+                },
+                "from": {
+                    "type": "array",
+                    "description": "the zone(s) from which cards are taken to replenish this zone"
+                },
+                "shuffle": {
+                    "type": "boolean",
+                    "description": "whether cards should be shuffled into this zone or not when replenishing it"
+                }
+            }
+        }
+    }
+}

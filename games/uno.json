@@ -1,0 +1,40 @@
+{
+    "$schema": "../schemas/game.schema.json",
+    "shared_zones": [{
+        "name": "draw_pile",
+        "decks": ["the_deck"],
+        "control": "active-player",
+        "is_library": true,
+        "order": "fixed",
+        "replenish": {
+            "from": ["discard_pile"],
+            "shuffle": true,
+            "on_empty": true
+        }
+    },{
+        "name": "discard_pile",
+        "decks": ["the_deck"],
+        "control": "all",
+        "zone_visibility": "all",
+        "order": "fixed",
+        "size": {
+            "initial": 1
+        }
+    }],
+    "player_zones": [{
+        "name": "hand",
+        "decks": ["the_deck"],
+        "card_visibility": "all",
+        "zone_visibility": "owner",
+        "control": "owner",
+        "size": {
+            "initial": 7
+        },
+        "order": "any"
+    }],
+    "players": [2,8],
+    "decks": [{
+        "name": "the_deck",
+        "source": "../decks/uno.json"
+    }]
+}

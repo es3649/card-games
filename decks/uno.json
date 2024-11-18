@@ -25,8 +25,6 @@
             "color": "#00f"
         }],
         "ranks": [{
-            "value": 0
-        },{
             "value": 1
         },{
             "value": 2
@@ -50,6 +48,23 @@
             "value": "Skip"
         },{
             "value": "+2"
+        }]
+    },{
+        "suits": [{
+            "name": "Red",
+            "color": "#f00"
+        },{
+            "name": "Green",
+            "color": "#0f0"
+        },{
+            "name": "Yellow",
+            "color": "#fc0"
+        },{
+            "name": "Blue",
+            "color": "#00f"
+        }],
+        "ranks": [{
+            "value": 0
         }]
     }]
 }
