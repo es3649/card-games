@@ -5,7 +5,7 @@
         "decks": ["the_deck"],
         "control": "active-player",
         "is_library": true,
-        "order": "fixed",
+        "order": "fixed-fifo",
         "replenish": {
             "from": ["discard_pile"],
             "shuffle": true,
@@ -16,7 +16,7 @@
         "decks": ["the_deck"],
         "control": "all",
         "zone_visibility": "all",
-        "order": "fixed",
+        "order": "fixed-lifo",
         "size": {
             "initial": 1
         }

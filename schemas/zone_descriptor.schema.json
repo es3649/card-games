@@ -52,14 +52,13 @@
         },
         "order": {
             "type": "string",
-            "enum": ["fixed", "shuffled", "any"],
+            "enum": ["fixed-fifo", "fixed-lifo", "shuffled", "any"],
             "description": "ordering properties of this zone: whether the order is fixed, they are shuffled, or they can be freely reordered (any)"
         },
         "count": {
             "allOf": [{"$ref": "./count.schema.json"}],
             "description": "the number of copies of this zone which can be created: default is 1"
         },
-
         "name": {
             "type": "string",
             "description": "the name of this zone, referenced in moving cards between properties"

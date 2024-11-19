@@ -1,0 +1,62 @@
+{
+    "$schema": "../schemas/game.schema.json",
+    "decks": [{
+        "name": "pack",
+        "source": "../decks/standard-52.json",
+        "each_player": true
+    }],
+    "players": [2,4],
+    "player_zones": [{
+        "name": "nerts",
+        "zone_visibility": "all",
+        "card_visibility": 1,
+        "control": "owner",
+        "decks": ["pack"],
+        "size": {
+            "initial": 13
+        },
+        "order": "fixed-fifo"
+    },{
+        "name": "work",
+        "zone_visibility": "all",
+        "card_visibility": "all",
+        "control": "owner",
+        "decks": ["pack"],
+        "size": {
+            "initial": 1
+        },
+        "order": "fixed-lifo",
+        "count": [0, 4]
+    },{
+        "name": "stock",
+        "card_visibility": "none",
+        "control": "owner",
+        "decks": ["pack"],
+        "is_library": true,
+        "order": "fixed-fifo",
+        "replenish": {
+            "from": ["waste"],
+            "shuffle": false,
+            "on_empty": true
+        }
+    },{
+        "name": "waste",
+        "card_visibility": 1,
+        "zone_visibility": "owner",
+        "control": "owner",
+        "decks": ["pack"],
+        "order": "fixed-lifo"
+    }],
+    "shared_zones": [{
+        "name": "play",
+        "card_visibility": 1,
+        "zone_visibility": "all",
+        "control": "all",
+        "decks": ["pack"],
+        "size": {
+            "limits": [0, 13]
+        },
+        "order": "fixed-lifo",
+        "count": [0, 16] 
+    }]
+}

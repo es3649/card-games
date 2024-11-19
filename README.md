@@ -104,3 +104,9 @@ A deck can be specified by enumerating cards, or through suit-rank pairings.
 ### Raw
 
 ### Pairs
+
+***
+
+## TODO
+
+Zone designations? (Canasta: frozen)
