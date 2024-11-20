@@ -1,0 +1,58 @@
+{
+    "$schema": "../schemas/deck.schema.json",
+    "pairs": [{
+        "copies": 16,
+        "suits": [{
+            "name": "5",
+            "color": "#8d0"
+        }],
+        "ranks": [
+            {"value": 4 },
+            {"value": 5 },
+            {"value": 6 },
+            {"value": 7 }
+        ]
+        }, {
+        "copies": 16,
+        "suits": [{
+            "name": "10",
+            "color": "#f70"
+        }],
+        "ranks": [
+            {"value": 8 },
+            {"value": 9 },
+            {"value": 10 },
+            {"value": "K" },
+            {"value": "Q" },
+            {"value": "K" }
+        ]
+    },{
+        "copies": 16,
+        "suits": [{
+            "name": "20",
+            "color": "#ee0"
+        }],
+        "ranks": [{
+            "value": "A"
+        },{
+            "value": "Wild",
+            "text": "Little"
+        }]
+    }],
+    "raw": [{
+        "suit": "50",
+        "value": "Wild",
+        "text": "Big",
+        "copies": 8,
+        "color": "#000"
+    },{
+        "suit": "5",
+        "value": "Stop",
+        "copies": 8,
+        "color": "#f00"
+    },{
+        "value": "Bonus",
+        "color": "#f40",
+        "copies": 8
+    }]
+}

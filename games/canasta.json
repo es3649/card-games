@@ -1,0 +1,48 @@
+{
+    "$schema": "../schemas/game.schema.json",
+    "decks": [{
+        "name": "canasta",
+        "source": "../decks/canasta.json"
+    }],
+    "players": [2,3],
+    "shared_zones": [{
+        "name": "deck",
+        "decks": ["canasta"],
+        "is_library": true,
+        "control": "all",
+        "order": "shuffled"
+    },{
+        "name": "discard_pile",
+        "decks": ["canasta"],
+        "card_visibility": 1,
+        "zone_visibility": "all",
+        "control": "active-player",
+        "order": "fixed-lifo",
+        "designations": {
+            "values": ["frozen"]
+        }
+    }],
+    "player_zones": [{
+        "name": "hand",
+        "card_visibility": "all",
+        "zone_visibility": "owner",
+        "control": "owner",
+        "decks": ["canasta"],
+        "order": "any"
+    },{
+        "name": "play",
+        "card_visibility": "all",
+        "zone_visibility": "all",
+        "control": "owner",
+        "decks": ["canasta"],
+        "order": "any",
+        "count": "*"
+    },{
+        "name": "bonuses",
+        "card_visibility": "all",
+        "zone_visibility": "all",
+        "control": "owner",
+        "order": "any",
+        "decks": ["canasta"]
+    }]
+}

@@ -48,7 +48,7 @@
         "order": "fixed-lifo"
     }],
     "shared_zones": [{
-        "name": "play",
+        "name": "foundation",
         "card_visibility": 1,
         "zone_visibility": "all",
         "control": "all",

@@ -13,6 +13,7 @@
             "minimum": 0
         }
     },{
-        "type": "null"
+        "type": "string",
+        "const": "*"
     }]
 }

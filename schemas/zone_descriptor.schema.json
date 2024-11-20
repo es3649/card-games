@@ -79,6 +79,23 @@
                     "description": "whether cards should be shuffled into this zone or not when replenishing it"
                 }
             }
+        },
+        "designations": {
+            "type": "object",
+            "description": "a collection of statuses or designations which can be applied to the zone; if several are specified, each grouping is mutually exclusive",
+            "properties": {
+                "values": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "description": "the names of the designations"
+                    }
+                },
+                "mutually_exclusive": {
+                    "type": "boolean",
+                    "description": "are the designations mutually exclusive"
+                }
+            }
         }
     }
 }
