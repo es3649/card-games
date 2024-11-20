@@ -8,6 +8,10 @@
         "decks"
     ],
     "properties": {
+        "name": {
+            "type": "string",
+            "description": "the name of this zone, referenced in moving cards between properties"
+        },
         "zone_visibility": {
             "enum": ["all", "owner", "active-player", "inactive-player", "allies", "opponents"],
             "description": "the visibility properties for this zone: who can see it? must be specified if card_visibility is set; if card_visibility isn't set, makes contents of the entire zone visible"
@@ -59,20 +63,29 @@
             "allOf": [{"$ref": "./count.schema.json"}],
             "description": "the number of copies of this zone which can be created: default is 1"
         },
-        "name": {
-            "type": "string",
-            "description": "the name of this zone, referenced in moving cards between properties"
-        },
         "replenish": {
+            "type": "object",
+            "required": [
+                "on_empty",
+                "from"
+            ],
             "description": "describes properties for replenishing this zone when it is below its size threshhold",
             "properties": {
-                "on_empty": {
-                    "type": "boolean",
+                "when": {
+                    "type": "array",
+                    "items": {
+                        "type": "string",
+                        "enum": ["on_empty", "on_input", "turn_end", "turn_start", "round_end", "round_start"]
+                    },
                     "description": "if no size is specified, we check this field to determine whether to repenish when the zone is empty"
                 },
                 "from": {
                     "type": "array",
                     "description": "the zone(s) from which cards are taken to replenish this zone"
+                },
+                "up_to": {
+                    "type": "integer",
+                    "minimum": 1
                 },
                 "shuffle": {
                     "type": "boolean",
@@ -83,6 +96,9 @@
         "designations": {
             "type": "object",
             "description": "a collection of statuses or designations which can be applied to the zone; if several are specified, each grouping is mutually exclusive",
+            "required": [
+                "values"
+            ],
             "properties": {
                 "values": {
                     "type": "array",
@@ -90,6 +106,9 @@
                         "type": "string",
                         "description": "the names of the designations"
                     }
+                },
+                "default": {
+                    "type": "string"
                 },
                 "mutually_exclusive": {
                     "type": "boolean",

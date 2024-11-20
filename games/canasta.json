@@ -5,6 +5,7 @@
         "source": "../decks/canasta.json"
     }],
     "players": [2,3],
+    "turns": true,
     "shared_zones": [{
         "name": "deck",
         "decks": ["canasta"],

@@ -4,6 +4,7 @@
         "shared_zones",
         "player_zones",
         "players",
+        "turns",
         "decks"
     ],
     "properties": {
@@ -50,10 +51,6 @@
                     "each_player": {
                         "type": "boolean",
                         "description": "whether a copy of this deck should be created for each player in the game"
-                    },
-                    "aces_high": {
-                        "type": "boolean",
-                        "description": "in games where card values can be assigned and well ordered, should aces/ones be considered high or low"
                     }
                 }
             }

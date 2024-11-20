@@ -33,6 +33,7 @@
         "order": "any"
     }],
     "players": [2,8],
+    "turns": true,
     "decks": [{
         "name": "the_deck",
         "source": "../decks/uno.json"
